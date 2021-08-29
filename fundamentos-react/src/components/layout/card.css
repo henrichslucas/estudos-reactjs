@@ -1,0 +1,24 @@
+.card{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    border: 3px solid #000;
+    border-radius: 10px;
+    background-color: #ffff;
+    margin: 20px;
+    min-width: 300px;
+    font-weight: 300;
+}
+
+.card .conteudo{
+    flex:1;
+    
+    padding: 15px 0px;
+    color:#000;
+}
+
+.card .footer{
+    padding: 5px 0px;
+    background-color: #000;
+    color:#ffff
+}
