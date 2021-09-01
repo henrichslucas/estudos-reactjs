@@ -1,0 +1,16 @@
+.card{
+    background-color: grey;
+    text-align: center;
+    padding: 50px;
+    border: 2px solid #000;
+    margin:15px;
+}
+
+.title{
+    border: 2px solid blueviolet;
+    margin-bottom:15px;
+}
+.content{
+    border: 2px solid blueviolet;
+    margin-bottom:15px;
+}
