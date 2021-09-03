@@ -1,17 +1,28 @@
-const Home = () => {
+import { useState, useEffect } from "react"
+import BlogList from './BlogList'
 
-    const handleClick = (e) => {
-        console.log('hello, ninjas', e)
-    }
-
- 
+const Home = () => { 
+    
+    const[blogs,setBlogs] = useState(null)
+    const[isLoading, setIsLoading] = useState(true)
+    
+    useEffect(() => { //useEffect faz algo a cada novo render
+        fetch('http://localhost:8000/blogs')
+            .then(res => {
+                return res.json()
+            })
+            .then(data => {
+                setBlogs(data)
+                setIsLoading(false)
+            })
+    }, [])
 
     return ( 
         <div className="home">
-            <h2>Homepage</h2>
-            <button onClick={handleClick}>Click me</button>
+            { isLoading && <div> carregando... </div> }
+           {blogs && <BlogList blogs={ blogs } title='All blogs'/>}
         </div>
-     );
+    );
 }
  
 export default Home;

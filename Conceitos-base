@@ -1,0 +1,224 @@
+ANOTAÇÕES VALIOSAS PARA NAO SER UMA MULA E FAZER ALGO PRODUTIVO SEM ESQUECER O BASICO
+
+COISAS UTEIS (IR ADICIONANDO O QUE FOR ACHANDO DE UTIL)
+	EXTENSAO SIMPLE REACT SNIPPETS:
+		FACILITA A VIDA COM COMANDOS NO EMMET PARA ENCURTAR E CRIAR MOLDES PRONTOS DE 			COMPONENTES
+		POR EXEMPLO: 
+			sfc
+			digite isso e dê tab para ter o seguinte molde:
+			
+				const  = () => {
+				    return (  );
+				}
+				 
+				export default ;
+			
+			imr
+			digite isso e dê tab para ter o seguinte molde:
+				
+				import React from 'react';
+				
+				
+				
+			agiliza a digitação, basicamente
+			
+			
+	
+	
+COMPONENTS:
+	Conceito base do react
+	Os componentes são constituidos de:
+		-templates, basicamente o HTML, o visual
+		-logic, a logica por trás do funcionamento da página
+	O conceito de componentes é semelhante a peças de lego, que podem ser utilizadas e 		reutilizadas de diversas formas, resultando em coisas diferentes, reaproveitando logica ja 		feita antes
+	
+CRIAÇÃO DE UM PROJETO/APP
+
+	Para criar um projeto basta:
+		-Acessar o diretorio que quiser deixar o projeto pelo console
+		-npx create-react-app nomeDoProjeto
+		-Ao terminar de baixar, basta dar code . para abrir o VSCODE no diretorio do app
+		-por fim, npm start para iniciar o server no browser
+	
+	Com o projeto base em mãos, deletamos tudo que estiver na pasta 'src', menos os arquivos:
+		-index.js
+		-index.css
+		-app.js
+		-app.css
+		Pois estes serão usados para começar o desenvolvimento do aplicativo
+	
+PONTOS RELEVANTES
+	É uma mistura de HTML com JS
+	
+	Para chamar um componente criado, basta:
+	<NomeComponente/> , como uma tag HTML, dentro do App.js
+	Dentro do componente, deve-se EXPORTAR a função principal para ativar o componente
+	Dentro do App.js, deve-se IMPORTAR o componente para detectar o componente
+	
+	import NomeComponente from './components/NomeComponente/NomeComponente.js
+	export default NomeComponente
+	
+	CRUCIAL, se estiver abaixo da versão 17, importar o seguinte no topo dos componentes:
+	import React from 'react'
+	
+	Se quiser mudar a cor do fundo da pagina TODA, criar um css do App.js e:
+	
+	body{
+	  background-color: cor;
+	}
+	
+	DESMEMBRANDO UM COMPONENTE: 
+		<header titulo='App de Clima!'/>
+		
+		header = nome do componente;
+		titulo = propriedade/prop do componente
+		'App de Clima!' = valor dentro da prop
+		
+		O prop serve para ser chamado dentro do componente, da seguinte forma:
+		
+		function Header(props) {
+
+		    return(
+			<h1>{props.titulo}</h1>
+		    )
+		}
+		
+		dentro do arquivo Header.js, por exemplo, teriamos essa função, que serve 			unicamente para pegar a propriedade "titulo" e repassá-la para dentro de uma tag 			h1, e retorna-la dentro da pagina web
+		
+		PROPS SERVEM TAMBEM PARA PASSAR VALORES PARA OUTRAS PROPS, DEPENDENDO DO 			PARENTESCO
+		
+	VALORES DINAMICOS/CODIGOS JAVASCRIPT
+		Para inserir um comando/codigo javascript APÓS o return ( por exemplo, para 			retornar uma função anonima, ou uma prop, ou qualquer coisa em javascript) basta:
+			{ escrever entre chaves :) }	
+			tudo que for escrito entre se torna javascript e as regras do mesmo se 				aplicam dentro delas, até comentarios com // ou /* */
+			TAMBEM PODE-SE ESCREVER JAVACRIPT ANTES DO RETURN!!!!!!!!!!!!!!!!!!!
+		VALOR DINAMICO = valor que muda de acordo com o que for declarado, exemplo:
+		
+		const numero = 100;
+		.
+		.
+		.
+		return (console.log({numero})) ← retornará : 100 no console
+		
+		COM ESSES DYNAMIC VALUES, FICA FACIL DE FAZER TEMPLATES COM INFORMAÇOES DE FORA, 			VINDO DE OUTROS COMPONENTES OU ATE MESMO DE API'S EXTERNAS, COMO LISTAS ETC...
+		
+	HOOKS
+	
+		hook = tipo especial de função que faz uma ação especifica
+		
+			useState: cria uma memoria, que permite modificar algo a partir de algum 				evento, como click em um botão, etc
+			para usar, temos que fazer o seguinte import:
+
+			import { useState } from 'react'
+			
+			e para invocar a o useState, podemos fazer algo como:
+				const[name, setName] = useState('valorQualquer')
+				ou seja, declarando a variavel name e a funçao setName, com o 				useState(com um valor inicial dentro dos parenteses)
+				setName é uma funçao que tera como objetivo, alterar uma variavel 					algo, que funciona da seguinte forma:
+					const click = () => {
+					setName('nomequalquer')
+					}
+				ou seja, o nome sera atualizado quando a função click for ativada
+				o useState serve para qualquer tipo de elemento, seja objeto, 				boolean, number, string...
+				
+			useEffect: realiza algo toda vez que o react renderiza algo
+			existe um metodo para bloquear isso, para limitar a ativação apenas quando 				algo especifico acontece, as chamadas dependancy array [], QUE PERMITE QUE O 			useEffect REALIZE APENAS UMA AÇÃO POR RENDER, E NAO A CADA MODIFICAÇÃO, IMPEDINDO 				ASSIM O LOOP
+			
+			
+	IMPORTANTE!!
+	EXTRAINDO DADOS DE UM OBJECT
+		em um objeto, podemos passar um method de javascript para ler cada propriedade desse 		objeto e realizar uma ação com ele da seguinte forma:
+		
+		exemplo:
+		
+		const[weatherInfo, setWeather] = useState([
+			{ temperature: '20 celsius', day:'yesterday', id:1},
+			{ temperature: '23 celsius', day:'today', id:2},
+			{ temperature: '19 celsius', day:'tomorrow', id:3}
+		])
+		
+		aqui temos um objeto com varias informaçoes, e queremos passar elas de forma 		automatica, logo:
+		
+		<div className="weatherInfo">
+            {weatherInfo.map((info) =>( 
+                <div className="tempView" key={ info.id }>
+                    <h2> {info.day}, max of : {info.temperature}</h2>
+		
+		passamos o .map dentro da variavel que contem o objeto, nesse caso o weatherInfo. 			por ser um array, ele le cada propriedade individualmente, e joga dentro da variavel 		info, um a um
+		o 'info' entao contem todas as informaçoes de uma das properties, exemplo:
+		
+			na primeira passada, o 'info' contem dentro de si as informaçoes:
+		
+				temperature: '20 celsius', 
+				day:'yesterday', 
+				id:1
+			ao passar ele vai para a proxima property, e pega as infos dela e assim vai 				ate acabar as properties
+		
+	PASSAR DADOS DE UM COMPONENT PARA OUTRO VIA PROPS
+		de forma simplificada:
+		-criamos um componente								
+		-dentro dele criamos uma função com algum dado
+		-no return, utilizar props para referenciar a função e assim coletar os dados 			daquela função		
+		LEMBRAR DE IMPORTAR A FUNÇÃO QUE IRA RECEBER OS DADOS DENTRO DA FUNÇÃO QUE IRÁ DAR 			OS DADOS
+	
+	FUNÇÃO SINCRONA E ASSINCRONA
+		função sincrona é aquela que precisamos parar todas as operaçoes para executar ela
+		funçao assincrona é aquela que nao precisamos parar nada, pode ser executada 		paralelamente com outras
+		
+	FUNÇÃO CALLBACK
+		é uma função que entra em outra função com ARGUMENT, sendo invocada dentro dessa segunda 			função para completar alguma ação 
+		
+	PROMISES
+		são,essencialmente, objetos que retornam um valor que vc espera receber em algum momento posterior, mas não agora
+		literalmente um promessa, voce determina que algo ocorra, e não sabe se irá.
+		caso ocorra, entao resolve()
+		caso nao ocorra, reject
+		
+	CONDITIONAL TEMPLATES
+		basicamente, usando o && para evitar erros de inicializaçao com valores null
+		
+			{blogs && <BlogList infos = {weatherInfo}/>}
+			
+			basicamente, se o que tiver do lado esquerdo do && nao for truthy (obs: null é 				falsy), o que estiver do lado direito do && sequer sera computado, evitando a 				passagem de qualquer coisa que seja null
+		
+		
+		
+	FETCH
+		Fetch é responsavel pela parte de fazer requests e responses(coisas de http), se 			conectando a um server e carregando dado a partir de um endpoint(URL onde a API se 			encontra)
+		
+		DESMEMBRANDO O FETCH
+			fetch('http://...') // ACESSANDO O ENDPOINT DA API E RETORNANDO UMA PROMISE
+				.then(res => res.json() // PEGANDO ESSA PROMISE COMO RESPONSE E 									ATRIBUINDO AO FORMATO JSON
+				.then(data =>{ // PEGANDO O JSON E JOGANDO DENTRO DA VARIAVEL DATA
+					console.log(data) // IMPRIMINDO O JSON, QUE É UM OBJETO, NO 											CONSOLE
+				})
+				
+	LOADING MESSAGE
+		ao fazer fetch, ou qualquer outra coisa que envolva requests e responses, por menor que 			seja, exige um tempo, logo, pode-se colocar uma mensagem de carregamento para melhorar a 			experiencia visual e compreensão do usuario
+		
+		entao, o procedimento a seguir pode ser feito para carregar essa mensagem de loading:
+		
+		(exemplo tirado do video do net ninja)
+		
+		no começo da função, declaramos o seguinte:
+		
+			const[isPending, setIsPending] = useState(true)
+				basicamente, criamos uma variavel isPending com useState, com o valor 				inicial sendo verdadeiro
+				
+				
+			
+		
+				
+INFO PARA DESAFIO
+	TERMOS PARA BUSCAR NA API DO REDDIT:
+		PARA FAZER O MINIMO PEDIDO:
+			-author = nome do criador do post
+			-url = endereço do link citado na postagem 
+			-thumbnail = endereço da imagem da thumbnail
+			-created_utc = data da postagem, tem que converter pois esta em unix timestamp
+		PARA ADICIONAR FEATURES:
+			-permalink = endereço da area de comentarios da propria postagem
+		
+		
+	
+		
