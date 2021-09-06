@@ -1,0 +1,12 @@
+header{
+    text-align: center;
+    max-height: 90px;
+    padding: 20px;
+    font-weight: 500;
+    background-color: #6324C6;
+    color: white;
+    font-size: 25px;
+}
+header span{
+    color: orange;
+}

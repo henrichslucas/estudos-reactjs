@@ -204,6 +204,21 @@ PONTOS RELEVANTES
 		
 			const[isPending, setIsPending] = useState(true)
 				basicamente, criamos uma variavel isPending com useState, com o valor 				inicial sendo verdadeiro
+	
+	ROUTER
+		router vai servir para os botoes da navbar do desafio da winnin, pois serve para redirecionar a aplicação para outras paginas
+
+		para usar, precisa importar o seguinte dentro da App.js:
+
+			import { BrowserRouter a Router, Route, Switch} from 'react-router-dom'
+
+		em seguida, encapsular tudo que estiver dentro da div App, incluindo a mesma, e usar o componente Switch para encapsular os conteudos que forem paginados
+		
+		sendo assim, o "header roxo"  e os botoes de navegação do desafio ficariam de fora pois eles estarao presentes em todas as paginas
+
+
+
+
 				
 				
 			

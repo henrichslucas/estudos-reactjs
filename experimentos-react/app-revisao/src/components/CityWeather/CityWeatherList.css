@@ -1,0 +1,9 @@
+.weatherList{
+    padding: 10px;
+    max-width: 30%;
+}
+.contentBody{
+    border-top: 2px solid grey;
+    padding-top: 10px;
+    font-weight: 300;
+}
