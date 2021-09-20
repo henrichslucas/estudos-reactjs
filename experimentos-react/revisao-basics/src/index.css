@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
+/* REFERENTE AO INDEX.JS */
+body,
+.simpleCalculatorPageContainer,
+.rickAndMortyPageContainer{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  background-color: #444444;
+  font-family: 'Indie Flower', cursive ;
+  overflow: hidden;
+}
+/* REFERENTE A PAGINA HOME */
+.home{
+  padding: 0;
+  display: flex;
+  flex-flow:row wrap;
+}
+
+.card{
+  text-align: center;
+  border: 2px solid #000000;
+  margin: 10px;
+  min-width: max-content;
+  min-height: max-content;
+  border-radius: 10px;
+  overflow: hidden; 
+}
+
+.card .cardContent{
+  transition: 0.5s;
+  padding: 15px 0px;
+  background-color: #ffff;
+  color:#000000;
+}
+.card .cardContent:hover{
+  padding: 20px 0px;
+}
+.card .cardTitle{
+  transition: 0.5s;
+  padding: 5px;
+  background-color: #000000;
+  color: #ffff;
+}
+/* REFERENTE AO PROJETO #1 */
+
+
+.simpleCalculatorPageContainer header{
+  color: #ffff;
+  font-size: 2em;
+  text-align: center;
+  margin: 10px;
+}
+.simpleCalculatorAppContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+}
+.simpleCalcArea{
+  border: 3px solid black;
+  background-color: blue;
+  border-radius: 10px;
+  padding: 20px;
+  overflow: hidden;
+}
+.simpleCalcDisplayArea{
+  text-align: center;
+  padding: 40px 0px;
+}
+.simpleCalcDisplay{
+  
+  padding: 20px 10px;
+  border-radius: 5px;
+  border: transparent;
+  overflow:hidden;
+}
+.simpleCalcButtonPad{
+  display: grid;
+  grid-gap: 10px;
+  margin: 10px;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.simpleCalcButtonPad button{
+  width: 100px;
+}
+
+
+/* REFERENTE AO PROJETO #2 */
+
+
+
